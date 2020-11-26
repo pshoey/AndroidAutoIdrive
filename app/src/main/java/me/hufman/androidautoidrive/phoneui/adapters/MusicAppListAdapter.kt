@@ -82,7 +82,7 @@ class MusicAppListAdapter(val context: Context, val handler: Handler, val suppor
 				imgMusicAppIcon.setImageDrawable(icon)
 				txtMusicAppName.text = appInfo.name
 
-				if (appInfo.packageName == musicSessions?.getPlayingApp()?.packageName) {
+				if (appInfo.packageName == musicSessions.getPlayingApp()?.packageName) {
 					imgNowPlaying.setImageDrawable(equalizerAnimated)
 					equalizerAnimated.start()
 					imgNowPlaying.visibility = View.VISIBLE

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import kotlinx.android.synthetic.main.fragment_connection_status.*
 import me.hufman.androidautoidrive.CarInformationObserver
 import me.hufman.androidautoidrive.R
@@ -78,6 +79,10 @@ class ConnectionStatusFragment: Fragment() {
 	}
 
 	fun redraw() {
+		if (!lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) {
+			return
+		}
+
 		val deviceName = Settings.Global.getString(requireContext().contentResolver, "device_name")
 
 		showEither(paneBMWMissing, paneBMWReady) {

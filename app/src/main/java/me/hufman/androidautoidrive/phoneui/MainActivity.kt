@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 			val intent = Intent(this, ConfigureNotificationsActivity::class.java)
 			startActivity(intent)
 		}
-		swGMaps.setOnCheckedChangeListener { buttonView, isChecked ->
+		swMapsEnabled.setOnCheckedChangeListener { buttonView, isChecked ->
 			if (buttonView != null) onChangedSwitchGMaps(buttonView, isChecked)
 			redraw()
 		}
@@ -157,8 +157,8 @@ class MainActivity : AppCompatActivity() {
 
 		swMessageNotifications.isChecked = appSettings[AppSettings.KEYS.ENABLED_NOTIFICATIONS].toBoolean()
 		paneNotifications.visible = appSettings[AppSettings.KEYS.ENABLED_NOTIFICATIONS].toBoolean()
-		swGMaps.isChecked = appSettings[AppSettings.KEYS.ENABLED_GMAPS].toBoolean()
-		paneGMaps.visible = appSettings[AppSettings.KEYS.ENABLED_GMAPS].toBoolean()
+		swMapsEnabled.isChecked = appSettings[AppSettings.KEYS.ENABLED_GMAPS].toBoolean()
+		paneMaps.visible = appSettings[AppSettings.KEYS.ENABLED_GMAPS].toBoolean()
 
 		if (ageOfActivity > SECURITY_SERVICE_TIMEOUT && !SecurityAccess.getInstance(this).isConnected()) {
 			txtConnectionStatus.text = resources.getString(R.string.connectionStatusMissingConnectedApp)
