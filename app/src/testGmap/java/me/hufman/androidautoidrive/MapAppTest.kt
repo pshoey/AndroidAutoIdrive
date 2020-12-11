@@ -127,14 +127,14 @@ class MapAppTest {
 
 		// show the map screen
 		mockClient.rhmi_onHmiEvent(1, "", app.fullImageView.state.id, 1, mapOf(4.toByte() to true))
-		verify(mockMap).changeImageSize(700, 400)
+		verify(mockMap).changeImageSize(800, 400)
 		verify(mockController).showMap()
 
 		// Send the fullsize map
 		reset(mockMap)
 		whenever(mockMap.getFrame()).then {
 			mock<Bitmap> {
-				on { width } doReturn 700
+				on { width } doReturn 800
 				on { height } doReturn 400
 			}
 		}.thenReturn(null)
